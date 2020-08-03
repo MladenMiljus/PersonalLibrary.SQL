@@ -1,0 +1,18 @@
+﻿USE PersonalLibrary
+
+IF OBJECT_ID('dbo.Users', 'U') IS NOT NULL
+	--DROP TABLE dbo.Users
+	SELECT TOP 100 * FROM dbo.Users
+ELSE
+BEGIN
+	CREATE TABLE dbo.Users
+	(
+		ID INT IDENTITY(1,1),
+		FirstName NVARCHAR(30) NOT NULL,
+		LastName NVARCHAR(30) NOT NULL,
+		Email VARCHAR(100) UNIQUE NOT NULL,
+		Active BIT DEFAULT 1,
+		CONSTRAINT PK_Users_ID PRIMARY KEY (ID)
+	)
+
+END
